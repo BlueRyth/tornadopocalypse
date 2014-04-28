@@ -532,7 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentEnvironment: {fileID: 0}
   NextEnvironment: {fileID: 0}
-  globals: {fileID: 0}
+  globals: {fileID: 993879365}
 --- !u!1001 &796419393
 Prefab:
   m_ObjectHideFlags: 0
