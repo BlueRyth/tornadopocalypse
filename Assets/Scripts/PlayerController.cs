@@ -23,12 +23,33 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		// Handle Input
+		InputHandler();
 	}
 
 	#endregion
 
 	#region Private Methods
+
+	private void InputHandler()
+	{
+		if (Input.GetKeyDown(LeftKey))
+		{
+
+		}
+		else if (Input.GetKeyDown(RightKey))
+		{
+
+		}
+		
+		if (Input.GetKeyDown(JumpKey))
+		{
+		}
+		
+		if (Input.GetKeyDown(PowerUpKey))
+	    {
+		}
+	}
 
 	private void Death()
 	{
