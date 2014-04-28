@@ -500,6 +500,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 779507999}
+  - 114: {fileID: 779508000}
   m_Layer: 0
   m_Name: EnviroMover
   m_TagString: Untagged
@@ -518,6 +519,20 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &779508000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 779507998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368f5a6c85077a142afe52ef371e74ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentEnvironment: {fileID: 0}
+  NextEnvironment: {fileID: 0}
+  globals: {fileID: 0}
 --- !u!1001 &796419393
 Prefab:
   m_ObjectHideFlags: 0
