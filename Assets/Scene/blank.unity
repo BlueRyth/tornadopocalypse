@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368f5a6c85077a142afe52ef371e74ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentEnvironment: {fileID: 0}
+  CurrentEnvironment: {fileID: 254870928}
   NextEnvironment: {fileID: 0}
   globals: {fileID: 993879365}
 --- !u!1001 &796419393
