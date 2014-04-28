@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnvironmentMovement : MonoBehaviour {
+public class EnvironmentMovement : MonoBehaviour 
+{
+    public Transform CurrentEnvironment;
+    public Transform NextEnvironment;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public float ScrollSpeed;
+
+    public void Update()
+    {
+        CurrentEnvironment.transform.Translate(new Vector3(-ScrollSpeed * Time.deltaTime, 0, 0));
+        NextEnvironment.transform.Translate(new Vector3(-ScrollSpeed * Time.deltaTime, 0, 0));
+    }
 }
