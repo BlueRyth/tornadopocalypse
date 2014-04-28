@@ -5,10 +5,18 @@ public class PlayerController : MonoBehaviour {
 
 	#region Public Fields
 
+	// Set in Editor
 	public KeyCode LeftKey;
 	public KeyCode RightKey;
 	public KeyCode JumpKey;
 	public KeyCode PowerUpKey;
+
+	#endregion
+
+	#region Public Properties
+
+	public bool IsJumping { get; private set; }
+	public bool IsStunned { get; private set; }
 
 	#endregion
 
@@ -17,12 +25,16 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-
+		IsJumping = false;
+		IsStunned = false;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		// Always translate to the right
+		transform.Translate(Vector3.right);
+
 		// Handle Input
 		InputHandler();
 	}
@@ -35,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (Input.GetKeyDown(LeftKey))
 		{
-
+			//transform.Translate
 		}
 		else if (Input.GetKeyDown(RightKey))
 		{
