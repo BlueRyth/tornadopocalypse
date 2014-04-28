@@ -422,6 +422,7 @@ GameObject:
   - 33: {fileID: 1730334128}
   - 65: {fileID: 1730334127}
   - 23: {fileID: 1730334126}
+  - 114: {fileID: 1730334130}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -483,6 +484,21 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1730334130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1730334125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcc6ef955555894c9553a1267197c19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftKey: 97
+  RightKey: 100
+  JumpKey: 115
+  PowerUpKey: 119
 --- !u!1 &2126060351
 GameObject:
   m_ObjectHideFlags: 0
