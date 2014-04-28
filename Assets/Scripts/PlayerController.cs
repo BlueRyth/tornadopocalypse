@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode RightKey;
 	public KeyCode JumpKey;
 	public KeyCode PowerUpKey;
+	public Global globals;
 
 	#endregion
 
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () 
 	{
 		// Always translate to the right
-		transform.Translate(Vector3.right);
+		transform.Translate(globals.RightTranslate);
 
 		// Handle Input
 		InputHandler();
