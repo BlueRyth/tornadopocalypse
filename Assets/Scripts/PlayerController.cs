@@ -12,24 +12,38 @@ public class PlayerController : MonoBehaviour {
 		Falling
 	}
 
+<<<<<<< HEAD
 	enum PlayerStunnedState
 	{
 		Normal,
 		Stunned,
 		Recovering
 	}
+=======
+    enum PlayerLaneState
+    {
+        Default,
+        One,
+        UpShift,
+        Two,
+        DownShift
+    }
+>>>>>>> 900b4ba099432cfd459b33c4cd60f73b90881d8f
 
 	#endregion
 
 	#region Public Fields
 
 	// Set in Editor
+    public KeyCode UpKey;
+    public KeyCode DownKey;
 	public KeyCode LeftKey; 
 	public KeyCode RightKey;
 	public KeyCode JumpKey;
 	public KeyCode PowerUpKey;
 	public Global globals;
 	public float PlayerSpeed = 10f;
+    public float ShiftSpeed = 1f;
 
 	#endregion
 
@@ -38,12 +52,18 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+<<<<<<< HEAD
 		// TODO: Change if the players don't start falling
 		jumpState = PlayerJumpState.Falling;
 		stunState = PlayerStunnedState.Normal;
 
 		// TODO: Set animation
 		renderer.material.color = Color.green;
+=======
+		JumpState = PlayerJumpState.Grounded;
+        LaneState = PlayerLaneState.One;
+		IsStunned = false;
+>>>>>>> 900b4ba099432cfd459b33c4cd60f73b90881d8f
 	}
 	
 	// Update is called once per frame
@@ -76,6 +96,11 @@ public class PlayerController : MonoBehaviour {
 	private PlayerJumpState jumpState;
 	private PlayerStunnedState stunState;
 
+<<<<<<< HEAD
+=======
+	private PlayerJumpState JumpState;
+    private PlayerLaneState LaneState;
+>>>>>>> 900b4ba099432cfd459b33c4cd60f73b90881d8f
 	private float currentJumpHeight;
 	private float stunTimer;
 
@@ -97,12 +122,49 @@ public class PlayerController : MonoBehaviour {
 			movement += new Vector3(PlayerSpeed * Time.deltaTime, 0f, 0f);
 		}
 
+        movement += LaneHandler();
+
 		movement += JumpHandler();
 
 		return movement;
 	}
 
+<<<<<<< HEAD
 	// Called from Movement Handler
+=======
+    private Vector3 LaneHandler()
+    {
+        if (Input.GetKey(UpKey) && (LaneState == PlayerLaneState.One || LaneState == PlayerLaneState.UpShift))
+        {
+            LaneState = PlayerLaneState.UpShift;
+        }
+        if (Input.GetKey(DownKey) && (LaneState == PlayerLaneState.Two || LaneState == PlayerLaneState.DownShift))
+        {
+            LaneState = PlayerLaneState.DownShift;
+        }
+
+        if (LaneState == PlayerLaneState.UpShift && transform.position.z >= 1.0f)
+        {
+            LaneState = PlayerLaneState.Two;
+        }
+        if (LaneState == PlayerLaneState.DownShift && transform.position.z <= 0.0f)
+        {
+            LaneState = PlayerLaneState.One;
+        }
+
+        Vector3 move = Vector3.zero;
+        if(LaneState == PlayerLaneState.DownShift)
+        {
+            move.z -= ShiftSpeed * Time.deltaTime;
+        }
+        else if (LaneState == PlayerLaneState.UpShift)
+        {
+            move.z += ShiftSpeed * Time.deltaTime;
+        }
+        return move;
+    }
+
+>>>>>>> 900b4ba099432cfd459b33c4cd60f73b90881d8f
 	private Vector3 JumpHandler()
 	{
 		if (jumpState == PlayerJumpState.Grounded)
