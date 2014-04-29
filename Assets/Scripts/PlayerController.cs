@@ -62,13 +62,19 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider collision)
 	{
-		Debug.Log ("WAT");
 		if (collision.gameObject.tag == globals.tag_KillPlane)
 		{
 			OnKillPlaneCollision();
 		}
 	}
 
+	private void OnCollisionEnter(Collider collision)
+	{
+		if (collision.gameObject.tag == globals.tag_Ground)
+		{
+			IsJumping = false;
+		}
+	}
 
 	private void InputHandler()
 	{
