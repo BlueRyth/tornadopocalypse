@@ -33,7 +33,9 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		// Lock position and rotation
 		transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+		transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, transform.rotation.eulerAngles.z));
 
 		// Handle Input
 		InputHandler();
