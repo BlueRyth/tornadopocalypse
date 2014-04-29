@@ -82,7 +82,6 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		movement += JumpHandler();
-		//movement += new Vector3(0f, globals.gravity * Time.deltaTime, 0f);
 
 		return movement;
 	}
@@ -141,7 +140,6 @@ public class PlayerController : MonoBehaviour {
 	
 	private void Death()
 	{
-		Debug.Log ("THANKS OBAMA");
 		GameObject.Destroy(this.gameObject);
 	}
 
@@ -157,10 +155,8 @@ public class PlayerController : MonoBehaviour {
 	
 	private void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log (collision.gameObject.name);
 		if (collision.gameObject.tag == globals.tag_Ground)
 		{
-			Debug.Log ("WAT");
 			JumpState = PlayerJumpState.Grounded;
 		}
 	}

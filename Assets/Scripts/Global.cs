@@ -7,7 +7,7 @@ public class Global : MonoBehaviour
 	public float ScrollSpeed;
 	public float MaxJumpHeight = 4f;
 	public float stunLength = 1.0f;
-	public float JumpDelta = 20.0f;
+	public float JumpDelta = 10.0f;
 	public float gravity = -9.8f;
 
 	// Convenience Properties
