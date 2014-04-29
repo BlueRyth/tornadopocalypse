@@ -46,9 +46,10 @@ public class PlayerController : MonoBehaviour {
 	void Update () 
 	{
 		// Only allow movement if not stunned
-		Vector3 movement = MovementHandler();
-
-		transform.Translate(movement);
+		if (!IsStunned)
+			transform.Translate(MovementHandler());
+		else
+			StunHandler();
 
 		// Button for interactions / powerups
 		if (Input.GetKeyDown(PowerUpKey))
@@ -133,6 +134,7 @@ public class PlayerController : MonoBehaviour {
 			if (stunTimer <= 0f)
 			{
 				IsStunned = false;
+				renderer.material.color = Color.white;
 				stunTimer = 0f;
 			}
 		}
@@ -150,7 +152,7 @@ public class PlayerController : MonoBehaviour {
 		if (collision.gameObject.tag == globals.tag_KillPlane)
 			OnKillPlaneCollision();
 		
-		if (collision.gameObject.tag == globals.tag_Environment)
+		if (collision.gameObject.tag == globals.tag_Obstacle)
 			OnObstacleCollision();
 	}
 	
@@ -170,10 +172,11 @@ public class PlayerController : MonoBehaviour {
 	}
 	private void OnObstacleCollision()
 	{
-		//// Hit by Obstacle
-		//IsStunned = true;
-		//JumpState = PlayerJumpState.Falling;
-		//stunTimer = globals.stunLength;
+		// Hit by Obstacle
+		IsStunned = true;
+		JumpState = PlayerJumpState.Falling;
+		stunTimer = globals.stunLength;
+		renderer.material.color = Color.red;
 	}
 
 	#endregion

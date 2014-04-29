@@ -20,4 +20,5 @@ public class Global : MonoBehaviour
 	public string tag_Ground = "Ground";
 	public string tag_Environment = "Environment";
 	public string tag_PowerUp = "PowerUp";
+	public string tag_Obstacle= "Obstacle";
 }
