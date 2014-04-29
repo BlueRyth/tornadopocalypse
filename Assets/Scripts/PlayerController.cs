@@ -107,22 +107,19 @@ public class PlayerController : MonoBehaviour {
     {
         if (Input.GetKey(UpKey) && (LaneState == PlayerLaneState.One || LaneState == PlayerLaneState.UpShift))
         {
-            Debug.Log("Upshift");
             LaneState = PlayerLaneState.UpShift;
         }
         if (Input.GetKey(DownKey) && (LaneState == PlayerLaneState.Two || LaneState == PlayerLaneState.DownShift))
         {
-            Debug.Log("Downshift");
             LaneState = PlayerLaneState.DownShift;
         }
+
         if (LaneState == PlayerLaneState.UpShift && transform.position.z >= 1.0f)
         {
-            Debug.Log("Lane Two");
             LaneState = PlayerLaneState.Two;
         }
         if (LaneState == PlayerLaneState.DownShift && transform.position.z <= 0.0f)
         {
-            Debug.Log("Lane One");
             LaneState = PlayerLaneState.One;
         }
 
