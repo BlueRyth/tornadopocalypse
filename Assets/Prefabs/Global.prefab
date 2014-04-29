@@ -39,6 +39,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollSpeed: 5
+  MaxJumpHeight: 5
+  stunLength: 1
+  JumpDelta: 50
+  gravity: -9.80000019
+  tag_KillPlane: KillPlane
+  tag_Player: Player
+  tag_Ground: Ground
+  tag_Environment: Environment
+  tag_PowerUp: PowerUp
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
