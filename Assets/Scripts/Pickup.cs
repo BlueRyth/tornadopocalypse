@@ -16,9 +16,7 @@ public class Pickup : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider)
-	{
-		Debug.Log(collider.gameObject.tag);
-		
+	{		
 		if (collider.gameObject.tag == globals.tag_Player)
 		{
 			GameObject.Destroy(gameObject);
