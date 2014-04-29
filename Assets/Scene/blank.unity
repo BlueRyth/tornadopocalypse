@@ -736,7 +736,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScrollSpeed: 5
   MaxJumpHeight: 5
-  stunLength: 1
   JumpDelta: 18.1399994
   gravity: -9.80000019
   tag_KillPlane: KillPlane

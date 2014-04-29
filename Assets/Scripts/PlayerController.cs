@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviour {
 		Falling
 	}
 
+	enum PlayerStunnedState
+	{
+		Normal,
+		Stunned,
+		Recovering
+	}
+
 	#endregion
 
 	#region Public Fields
@@ -26,32 +33,33 @@ public class PlayerController : MonoBehaviour {
 
 	#endregion
 
-	#region Public Properties
-
-	public bool IsStunned { get; private set; }
-	public bool IsDying   { get; private set; }
-
-	#endregion
-
 	#region Monobehavior
 
 	// Use this for initialization
 	void Start () 
 	{
-		JumpState = PlayerJumpState.Grounded;
-		IsStunned = false;
+		// TODO: Change if the players don't start falling
+		jumpState = PlayerJumpState.Falling;
+		stunState = PlayerStunnedState.Normal;
+
+		// TODO: Set animation
+		renderer.material.color = Color.green;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		// Only allow movement if not stunned
-		if (!IsStunned)
+		if (stunState != PlayerStunnedState.Stunned)
 			transform.Translate(MovementHandler());
 		else
-			StunHandler();
+			transform.Translate(globals.LeftTranslate);
 
-		// Button for interactions / powerups
+		// Update stun timer if we're stunned or recovering
+		if (stunState != PlayerStunnedState.Normal)
+			ContinueStun();
+
+		// TODO: Button for interactions / powerups
 		if (Input.GetKeyDown(PowerUpKey))
 		{
 			Debug.Log ("POW");
@@ -60,15 +68,22 @@ public class PlayerController : MonoBehaviour {
 
 	#endregion
 
-	private const float minYPos = 0f;
+	#region Private Fields
 
-	private PlayerJumpState JumpState;
+	private const float DefaultPlayerStunTime = 1.0f;
+	private const float DefaultPlayerRecoveryTime = 1.0f;
+	
+	private PlayerJumpState jumpState;
+	private PlayerStunnedState stunState;
+
 	private float currentJumpHeight;
 	private float stunTimer;
-	private float jumpTimer;
+
+	#endregion
 
 	#region Private Methods
 
+	// Called from Update
 	private Vector3 MovementHandler()
 	{
 		Vector3 movement = Vector3.zero;
@@ -87,54 +102,81 @@ public class PlayerController : MonoBehaviour {
 		return movement;
 	}
 
+	// Called from Movement Handler
 	private Vector3 JumpHandler()
 	{
-		if (JumpState == PlayerJumpState.Grounded)
+		if (jumpState == PlayerJumpState.Grounded)
 		{
 			// Start Jump if Grounded and Jump Key Down
 			if (Input.GetKeyDown(JumpKey))
 			{
-				JumpState = PlayerJumpState.Jumping;
+				jumpState = PlayerJumpState.Jumping;
 			}
 		}
-		else if (JumpState == PlayerJumpState.Jumping)
+		else if (jumpState == PlayerJumpState.Jumping)
 		{
-			// Jump till key released or max jump reached
+			// Start falling if jump key released
 			if (Input.GetKey (JumpKey))
 		    {
 				float deltaJump = globals.JumpDelta * Time.deltaTime;
 				float testHeight = currentJumpHeight + deltaJump;
+
+				// Start falling if max height
 				if (testHeight >= globals.MaxJumpHeight)
 				{
 					deltaJump = globals.MaxJumpHeight - currentJumpHeight;
 					currentJumpHeight = 0f;
-					JumpState = PlayerJumpState.Falling;
+					jumpState = PlayerJumpState.Falling;
 				}
 				else
 				{
 					currentJumpHeight += deltaJump;
 				}
+
 				return new Vector3(0f, deltaJump, 0f);
 			}
 			else
 			{
 				currentJumpHeight = 0f;
-				JumpState = PlayerJumpState.Falling;
+				jumpState = PlayerJumpState.Falling;
 			}
 		}
 
 		return Vector3.zero;
 	}
-	
-	private void StunHandler()
+
+	private void StartStun(float stunTime)
 	{
-		if (IsStunned)
+		// Set stun state, stop jumping
+		stunState = PlayerStunnedState.Stunned;
+		jumpState = PlayerJumpState.Falling;
+		
+		// Set stun timer
+		stunTimer = stunTime;
+		
+		// TODO: Set Stun Animation
+		renderer.material.color = Color.red;
+	}
+	
+	private void ContinueStun()
+	{
+		if (stunState == PlayerStunnedState.Stunned)
 		{
 			stunTimer -= Time.deltaTime;
 			if (stunTimer <= 0f)
 			{
-				IsStunned = false;
-				renderer.material.color = Color.white;
+				stunState = PlayerStunnedState.Recovering;
+				renderer.material.color = Color.yellow;
+				stunTimer = DefaultPlayerRecoveryTime;
+			}
+		}
+		else if (stunState == PlayerStunnedState.Recovering)
+		{
+			stunTimer -= Time.deltaTime;
+			if (stunTimer <= 0f)
+			{
+				stunState = PlayerStunnedState.Normal;
+				renderer.material.color = Color.green;
 				stunTimer = 0f;
 			}
 		}
@@ -161,7 +203,7 @@ public class PlayerController : MonoBehaviour {
 		if (collision.gameObject.tag == globals.tag_Ground)
 		{
 			currentJumpHeight = 0f;
-			JumpState = PlayerJumpState.Grounded;
+			jumpState = PlayerJumpState.Grounded;
 		}
 	}
 
@@ -172,12 +214,15 @@ public class PlayerController : MonoBehaviour {
 	}
 	private void OnObstacleCollision()
 	{
-		// Hit by Obstacle
-		IsStunned = true;
-		JumpState = PlayerJumpState.Falling;
-		stunTimer = globals.stunLength;
-		renderer.material.color = Color.red;
+		// Stun if hit by Obstacle and in normal stun state
+		if (stunState == PlayerStunnedState.Normal)
+		{
+			// TODO: accept variable stun times from collision object
+			StartStun(DefaultPlayerStunTime);
+		}
 	}
 
+
+	
 	#endregion
 }
