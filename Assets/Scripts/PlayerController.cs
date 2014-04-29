@@ -157,6 +157,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == globals.tag_Ground)
 		{
+			currentJumpHeight = 0f;
 			JumpState = PlayerJumpState.Grounded;
 		}
 	}

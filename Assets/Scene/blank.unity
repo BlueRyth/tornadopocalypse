@@ -109,6 +109,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d5f68b20a527eb646a154afabf5fe556, type: 2}
+      propertyPath: JumpDelta
+      value: 18.1399994
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5f68b20a527eb646a154afabf5fe556, type: 2}
   m_RootGameObject: {fileID: 993879363}
@@ -171,7 +175,7 @@ GameObject:
   - 23: {fileID: 241733786}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -729,7 +733,7 @@ MonoBehaviour:
   ScrollSpeed: 5
   MaxJumpHeight: 5
   stunLength: 1
-  JumpDelta: 50
+  JumpDelta: 18.1399994
   gravity: -9.80000019
   tag_KillPlane: KillPlane
   tag_Player: Player
