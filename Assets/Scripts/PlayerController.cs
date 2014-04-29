@@ -33,11 +33,23 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		// Always translate to the right
-		transform.Translate(globals.RightTranslate);
+		transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
 
 		// Handle Input
 		InputHandler();
+	}
+
+	void FixedUpdate()
+	{
+
+		if (Input.GetKeyDown(JumpKey))
+		{
+			if (!IsJumping)
+			{
+				rigidbody.AddForce(Vector3.up * 500f);
+				//IsJumping = true;
+			}
+		}
 	}
 
 	#endregion
@@ -46,21 +58,20 @@ public class PlayerController : MonoBehaviour {
 
 	private void InputHandler()
 	{
-		if (Input.GetKeyDown(LeftKey))
+		if (Input.GetKey(LeftKey))
 		{
-			//transform.Translate
+			transform.Translate(globals.LeftTranslate);
 		}
-		else if (Input.GetKeyDown(RightKey))
+		else if (Input.GetKey(RightKey))
 		{
-
+			transform.Translate(globals.RightTranslate);
 		}
 		
-		if (Input.GetKeyDown(JumpKey))
-		{
-		}
+
 		
 		if (Input.GetKeyDown(PowerUpKey))
 	    {
+			Debug.Log ("POW");
 		}
 	}
 

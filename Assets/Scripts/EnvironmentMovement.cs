@@ -12,7 +12,7 @@ public class EnvironmentMovement : MonoBehaviour
     {
         if(CurrentEnvironment != null)
             CurrentEnvironment.transform.Translate(new Vector3(-globals.ScrollSpeed * Time.deltaTime, 0, 0));
-        if (CurrentEnvironment != null)
+		if (NextEnvironment != null)
             NextEnvironment.transform.Translate(new Vector3(-globals.ScrollSpeed * Time.deltaTime, 0, 0));
     }
 }
