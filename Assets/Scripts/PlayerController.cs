@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 
 	public bool IsJumping { get; private set; }
 	public bool IsStunned { get; private set; }
+	public bool IsDying   { get; private set; }
 
 	#endregion
 
@@ -33,45 +34,69 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		// Always translate to the right
-		transform.Translate(globals.RightTranslate);
+		// Lock position and rotation
+		transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+		transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, transform.rotation.eulerAngles.z));
 
 		// Handle Input
 		InputHandler();
+	}
+
+	void FixedUpdate()
+	{
+
+		if (Input.GetKeyDown(JumpKey))
+		{
+			// Jumping
+			if (!IsJumping)
+			{
+				rigidbody.AddForce(Vector3.up * 500f);
+				//IsJumping = true;
+			}
+		}
 	}
 
 	#endregion
 
 	#region Private Methods
 
+	private void OnTriggerEnter(Collider collision)
+	{
+		Debug.Log ("WAT");
+		if (collision.gameObject.tag == globals.tag_KillPlane)
+		{
+			OnKillPlaneCollision();
+		}
+	}
+
+
 	private void InputHandler()
 	{
-		if (Input.GetKeyDown(LeftKey))
+		if (Input.GetKey(LeftKey))
 		{
-			//transform.Translate
+			transform.Translate(globals.LeftTranslate);
 		}
-		else if (Input.GetKeyDown(RightKey))
+		else if (Input.GetKey(RightKey))
 		{
+			transform.Translate(globals.RightTranslate);
+		}
 
-		}
-		
-		if (Input.GetKeyDown(JumpKey))
-		{
-		}
-		
 		if (Input.GetKeyDown(PowerUpKey))
 	    {
+			Debug.Log ("POW");
 		}
 	}
 
 	private void Death()
 	{
-		// Deathy things
+		Debug.Log ("THANKS OBAMA");
+		GameObject.Destroy(this.gameObject);
 	}
 
 	private void OnKillPlaneCollision()
 	{
 		// Killy things
+		Death ();
 	}
 
 	#endregion
