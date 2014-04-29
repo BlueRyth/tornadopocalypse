@@ -62,8 +62,9 @@ ModelImporter:
     400054: R_toeball
     400056: R_wrist
     4300000: fatbert
-    7400000: Take 001
+    7400000: Run
     9500000: //RootNode
+    11100000: //RootNode
     13700000: fatbert
   materials:
     importMaterials: 1
@@ -79,11 +80,95 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 16
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fatbert
+        weight: 1
+      - path: god
+        weight: 1
+      - path: god/C_pelvis
+        weight: 1
+      - path: god/C_pelvis/C_midback
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/C_neck
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/C_neck/C_head
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/C_tie1
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/C_tie1/C_tie2
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/C_tie1/C_tie2/C_tie3
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/C_tie1/C_tie2/C_tie3/C_tie4
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/L_clavicle
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/L_clavicle/L_shoulder
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/L_clavicle/L_shoulder/L_eblow
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/L_clavicle/L_shoulder/L_eblow/L_wrist
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/L_clavicle/L_shoulder/L_eblow/L_wrist/L_briefcase
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/R_clavicle
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/R_clavicle/R_shoulder
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/R_clavicle/R_shoulder/R_eblow
+        weight: 1
+      - path: god/C_pelvis/C_midback/C_upperback/R_clavicle/R_shoulder/R_eblow/R_wrist
+        weight: 1
+      - path: god/C_pelvis/L_femur
+        weight: 1
+      - path: god/C_pelvis/L_femur/L_knee
+        weight: 1
+      - path: god/C_pelvis/L_femur/L_knee/L_ankle
+        weight: 1
+      - path: god/C_pelvis/L_femur/L_knee/L_ankle/L_toeball
+        weight: 1
+      - path: god/C_pelvis/R_femur
+        weight: 1
+      - path: god/C_pelvis/R_femur/R_knee
+        weight: 1
+      - path: god/C_pelvis/R_femur/R_knee/R_ankle
+        weight: 1
+      - path: god/C_pelvis/R_femur/R_knee/R_ankle/R_toeball
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -115,6 +200,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   additionalBone: 0
   userData: 

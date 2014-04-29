@@ -39,7 +39,11 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode RightKey;
 	public KeyCode JumpKey;
 	public KeyCode PowerUpKey;
+
 	public Global globals;
+	public Renderer MyRenderer;
+	public Collider MyCollider;
+
 	public float PlayerSpeed = 10f;
     public float ShiftSpeed = 1f;
 
@@ -51,14 +55,18 @@ public class PlayerController : MonoBehaviour {
 	void Start () 
 	{
 
+		MyRenderer = transform.GetComponentInChildren<Renderer>();
+		MyCollider = transform.GetComponentInChildren<Collider>();
+
 		// TODO: Change if the players don't start falling
 		jumpState = PlayerJumpState.Falling;
 		stunState = PlayerStunnedState.Normal;
 		LaneState = PlayerLaneState.One;
 
 		// TODO: Set animation
-		renderer.material.color = Color.green;
+		MyRenderer.material.color = Color.green;
 
+		animation.Play ("Run");
        
 	}
 	
@@ -67,9 +75,9 @@ public class PlayerController : MonoBehaviour {
 	{
 		// Only allow movement if not stunned
 		if (stunState != PlayerStunnedState.Stunned)
-			transform.Translate(MovementHandler());
+			transform.Translate(MovementHandler(), Space.World);
 		else
-			transform.Translate(globals.LeftTranslate);
+			transform.Translate(globals.LeftTranslate, Space.World);
 
 		// Update stun timer if we're stunned or recovering
 		if (stunState != PlayerStunnedState.Normal)
@@ -205,7 +213,7 @@ public class PlayerController : MonoBehaviour {
 		stunTimer = stunTime;
 		
 		// TODO: Set Stun Animation
-		renderer.material.color = Color.red;
+		MyRenderer.material.color = Color.red;
 	}
 	
 	private void ContinueStun()
@@ -216,7 +224,7 @@ public class PlayerController : MonoBehaviour {
 			if (stunTimer <= 0f)
 			{
 				stunState = PlayerStunnedState.Recovering;
-				renderer.material.color = Color.yellow;
+				MyRenderer.material.color = Color.yellow;
 				stunTimer = DefaultPlayerRecoveryTime;
 			}
 		}
@@ -226,7 +234,7 @@ public class PlayerController : MonoBehaviour {
 			if (stunTimer <= 0f)
 			{
 				stunState = PlayerStunnedState.Normal;
-				renderer.material.color = Color.green;
+				MyRenderer.material.color = Color.green;
 				stunTimer = 0f;
 			}
 		}
