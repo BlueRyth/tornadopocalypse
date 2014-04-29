@@ -3,8 +3,14 @@ using System.Collections;
 
 public class Global : MonoBehaviour 
 {
+	// Fields
     public float ScrollSpeed;
+	public float MaxJumpHeight = 4f;
+	public float stunLength = 1.0f;
+	public float JumpDelta = 1.0f;
+	public float gravity = -9.8f;
 
+	// Convenience Properties
 	public Vector3 RightTranslate { get { return new Vector3(ScrollSpeed * Time.deltaTime, 0f, 0f); } }
 	public Vector3 LeftTranslate  { get { return new Vector3(-ScrollSpeed * Time.deltaTime, 0f, 0f); } }
 
