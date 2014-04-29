@@ -17,12 +17,11 @@ public class PlayerController : MonoBehaviour {
 	#region Public Fields
 
 	// Set in Editor
-	public KeyCode LeftKey;
+	public KeyCode LeftKey; 
 	public KeyCode RightKey;
 	public KeyCode JumpKey;
 	public KeyCode PowerUpKey;
 	public Global globals;
-	public CharacterController controller;
 	public float PlayerSpeed = 10f;
 
 	#endregion
@@ -47,8 +46,9 @@ public class PlayerController : MonoBehaviour {
 	void Update () 
 	{
 		// Only allow movement if not stunned
-		if (!IsStunned)
-			controller.Move(MovementHandler());
+		Vector3 movement = MovementHandler();
+
+		transform.Translate(movement);
 
 		// Button for interactions / powerups
 		if (Input.GetKeyDown(PowerUpKey))
@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour {
 	private PlayerJumpState JumpState;
 	private float currentJumpHeight;
 	private float stunTimer;
+	private float jumpTimer;
 
 	#region Private Methods
 
@@ -81,7 +82,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		movement += JumpHandler();
-		movement += new Vector3(0f, globals.gravity * Time.deltaTime, 0f);
+		//movement += new Vector3(0f, globals.gravity * Time.deltaTime, 0f);
 
 		return movement;
 	}
@@ -108,6 +109,10 @@ public class PlayerController : MonoBehaviour {
 					deltaJump = globals.MaxJumpHeight - currentJumpHeight;
 					currentJumpHeight = 0f;
 					JumpState = PlayerJumpState.Falling;
+				}
+				else
+				{
+					currentJumpHeight += deltaJump;
 				}
 				return new Vector3(0f, deltaJump, 0f);
 			}
