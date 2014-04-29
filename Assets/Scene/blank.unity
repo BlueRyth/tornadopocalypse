@@ -283,7 +283,7 @@ GameObject:
   - 23: {fileID: 335207865}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,7 +329,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 169847744}
   m_GameObject: {fileID: 335207863}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -459,11 +459,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: e2633d5c2f05f6f47a6c27fb53c4cce3, type: 2}
       propertyPath: UpKey
-      value: 273
+      value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: e2633d5c2f05f6f47a6c27fb53c4cce3, type: 2}
       propertyPath: DownKey
-      value: 274
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: e2633d5c2f05f6f47a6c27fb53c4cce3, type: 2}
+      propertyPath: ShiftSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2633d5c2f05f6f47a6c27fb53c4cce3, type: 2}
@@ -483,7 +487,7 @@ GameObject:
   - 23: {fileID: 672387390}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,7 +533,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 169847744}
   m_GameObject: {fileID: 672387388}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -640,7 +644,7 @@ GameObject:
   - 23: {fileID: 816160321}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -675,7 +679,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 169847744}
   m_GameObject: {fileID: 816160320}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -748,6 +752,7 @@ MonoBehaviour:
   tag_Ground: Ground
   tag_Environment: Environment
   tag_PowerUp: PowerUp
+  tag_Obstacle: Obstacle
 --- !u!1 &1159494606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1044,7 @@ GameObject:
   - 23: {fileID: 1507615490}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1085,7 +1090,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 169847744}
   m_GameObject: {fileID: 1507615488}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1187,15 +1192,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcc6ef955555894c9553a1267197c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpKey: 273
-  DownKey: 274
+  UpKey: 113
+  DownKey: 101
   LeftKey: 97
   RightKey: 100
   JumpKey: 32
   PowerUpKey: 115
   globals: {fileID: 993879365}
   PlayerSpeed: 10
-  ShiftSpeed: 1
+  ShiftSpeed: 2
 --- !u!65 &1730334131
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1221,7 +1226,7 @@ GameObject:
   - 23: {fileID: 1751821868}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1267,7 +1272,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 169847744}
   m_GameObject: {fileID: 1751821866}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
