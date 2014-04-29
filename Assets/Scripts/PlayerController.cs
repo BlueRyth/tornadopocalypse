@@ -12,14 +12,13 @@ public class PlayerController : MonoBehaviour {
 		Falling
 	}
 
-<<<<<<< HEAD
 	enum PlayerStunnedState
 	{
 		Normal,
 		Stunned,
 		Recovering
 	}
-=======
+
     enum PlayerLaneState
     {
         Default,
@@ -28,7 +27,6 @@ public class PlayerController : MonoBehaviour {
         Two,
         DownShift
     }
->>>>>>> 900b4ba099432cfd459b33c4cd60f73b90881d8f
 
 	#endregion
 
@@ -52,18 +50,16 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-<<<<<<< HEAD
+
 		// TODO: Change if the players don't start falling
 		jumpState = PlayerJumpState.Falling;
 		stunState = PlayerStunnedState.Normal;
+		LaneState = PlayerLaneState.One;
 
 		// TODO: Set animation
 		renderer.material.color = Color.green;
-=======
-		JumpState = PlayerJumpState.Grounded;
-        LaneState = PlayerLaneState.One;
-		IsStunned = false;
->>>>>>> 900b4ba099432cfd459b33c4cd60f73b90881d8f
+
+       
 	}
 	
 	// Update is called once per frame
@@ -95,12 +91,8 @@ public class PlayerController : MonoBehaviour {
 	
 	private PlayerJumpState jumpState;
 	private PlayerStunnedState stunState;
-
-<<<<<<< HEAD
-=======
-	private PlayerJumpState JumpState;
     private PlayerLaneState LaneState;
->>>>>>> 900b4ba099432cfd459b33c4cd60f73b90881d8f
+
 	private float currentJumpHeight;
 	private float stunTimer;
 
@@ -128,10 +120,7 @@ public class PlayerController : MonoBehaviour {
 
 		return movement;
 	}
-
-<<<<<<< HEAD
-	// Called from Movement Handler
-=======
+	
     private Vector3 LaneHandler()
     {
         if (Input.GetKey(UpKey) && (LaneState == PlayerLaneState.One || LaneState == PlayerLaneState.UpShift))
@@ -164,7 +153,6 @@ public class PlayerController : MonoBehaviour {
         return move;
     }
 
->>>>>>> 900b4ba099432cfd459b33c4cd60f73b90881d8f
 	private Vector3 JumpHandler()
 	{
 		if (jumpState == PlayerJumpState.Grounded)
