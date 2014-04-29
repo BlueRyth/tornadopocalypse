@@ -27,10 +27,13 @@ public class EnvironmentMovement : MonoBehaviour
     public void Update()
     {
         environmentOffset += globals.ScrollSpeed * Time.deltaTime;
-        if(CurrentEnvironment != null)
+
+        if (CurrentEnvironment != null)
             CurrentEnvironment.transform.Translate(globals.LeftTranslate);
         if (NextEnvironment != null)
             NextEnvironment.transform.Translate(globals.LeftTranslate);
+        if (PreviousEnvironment != null)
+            PreviousEnvironment.transform.Translate(globals.LeftTranslate);
 
         if (environmentOffset > EnvironmentWidth)
         {
@@ -38,6 +41,11 @@ public class EnvironmentMovement : MonoBehaviour
             PreviousEnvironment = CurrentEnvironment;
             CurrentEnvironment = NextEnvironment;
             RollNextEnvironment();
+        }
+
+        // HACK: Need to wait longer to clear the previous environment
+        if (PreviousEnvironment != null && environmentOffset > EnvironmentWidth / 2.0f)
+        {
             DestroyPreviousEnvironment();
         }
     }
