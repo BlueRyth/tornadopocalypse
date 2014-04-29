@@ -457,6 +457,14 @@ Prefab:
       propertyPath: controller
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: e2633d5c2f05f6f47a6c27fb53c4cce3, type: 2}
+      propertyPath: UpKey
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: e2633d5c2f05f6f47a6c27fb53c4cce3, type: 2}
+      propertyPath: DownKey
+      value: 274
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2633d5c2f05f6f47a6c27fb53c4cce3, type: 2}
   m_RootGameObject: {fileID: 1730334125}
@@ -1179,12 +1187,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcc6ef955555894c9553a1267197c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpKey: 273
+  DownKey: 274
   LeftKey: 97
   RightKey: 100
   JumpKey: 32
   PowerUpKey: 115
   globals: {fileID: 993879365}
   PlayerSpeed: 10
+  ShiftSpeed: 1
 --- !u!65 &1730334131
 BoxCollider:
   m_ObjectHideFlags: 0

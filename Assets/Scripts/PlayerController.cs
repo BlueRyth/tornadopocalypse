@@ -12,17 +12,29 @@ public class PlayerController : MonoBehaviour {
 		Falling
 	}
 
+    enum PlayerLaneState
+    {
+        Default,
+        One,
+        UpShift,
+        Two,
+        DownShift
+    }
+
 	#endregion
 
 	#region Public Fields
 
 	// Set in Editor
+    public KeyCode UpKey;
+    public KeyCode DownKey;
 	public KeyCode LeftKey; 
 	public KeyCode RightKey;
 	public KeyCode JumpKey;
 	public KeyCode PowerUpKey;
 	public Global globals;
 	public float PlayerSpeed = 10f;
+    public float ShiftSpeed = 1f;
 
 	#endregion
 
@@ -39,6 +51,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () 
 	{
 		JumpState = PlayerJumpState.Grounded;
+        LaneState = PlayerLaneState.One;
 		IsStunned = false;
 	}
 	
@@ -62,6 +75,7 @@ public class PlayerController : MonoBehaviour {
 	private const float minYPos = 0f;
 
 	private PlayerJumpState JumpState;
+    private PlayerLaneState LaneState;
 	private float currentJumpHeight;
 	private float stunTimer;
 	private float jumpTimer;
@@ -81,10 +95,47 @@ public class PlayerController : MonoBehaviour {
 			movement += new Vector3(PlayerSpeed * Time.deltaTime, 0f, 0f);
 		}
 
+        movement += LaneHandler();
+
 		movement += JumpHandler();
 
 		return movement;
 	}
+
+    private Vector3 LaneHandler()
+    {
+        if (Input.GetKey(UpKey) && (LaneState == PlayerLaneState.One || LaneState == PlayerLaneState.UpShift))
+        {
+            Debug.Log("Upshift");
+            LaneState = PlayerLaneState.UpShift;
+        }
+        if (Input.GetKey(DownKey) && (LaneState == PlayerLaneState.Two || LaneState == PlayerLaneState.DownShift))
+        {
+            Debug.Log("Downshift");
+            LaneState = PlayerLaneState.DownShift;
+        }
+        if (LaneState == PlayerLaneState.UpShift && transform.position.z >= 1.0f)
+        {
+            Debug.Log("Lane Two");
+            LaneState = PlayerLaneState.Two;
+        }
+        if (LaneState == PlayerLaneState.DownShift && transform.position.z <= 0.0f)
+        {
+            Debug.Log("Lane One");
+            LaneState = PlayerLaneState.One;
+        }
+
+        Vector3 move = Vector3.zero;
+        if(LaneState == PlayerLaneState.DownShift)
+        {
+            move.z -= ShiftSpeed * Time.deltaTime;
+        }
+        else if (LaneState == PlayerLaneState.UpShift)
+        {
+            move.z += ShiftSpeed * Time.deltaTime;
+        }
+        return move;
+    }
 
 	private Vector3 JumpHandler()
 	{
