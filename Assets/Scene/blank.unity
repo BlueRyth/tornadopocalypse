@@ -305,7 +305,7 @@ GameObject:
   - 54: {fileID: 668718548}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,6 +528,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6b7f9f9297148754b887e57b18413d71, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b7f9f9297148754b887e57b18413d71, type: 2}
   m_RootGameObject: {fileID: 668718543}
@@ -728,7 +732,7 @@ GameObject:
   - 65: {fileID: 1254849836}
   m_Layer: 0
   m_Name: Kill Plane
-  m_TagString: Untagged
+  m_TagString: Kill Plane
   m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -991,6 +995,10 @@ Prefab:
     - target: {fileID: 400000, guid: ccb01e0386747454194361f113ad6128, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ccb01e0386747454194361f113ad6128, type: 2}
+      propertyPath: m_TagString
+      value: Kill Plane
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ccb01e0386747454194361f113ad6128, type: 2}
