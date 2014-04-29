@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 
 	public bool IsJumping { get; private set; }
 	public bool IsStunned { get; private set; }
+	public bool IsDying   { get; private set; }
 
 	#endregion
 
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetKeyDown(JumpKey))
 		{
+			// Jumping
 			if (!IsJumping)
 			{
 				rigidbody.AddForce(Vector3.up * 500f);
@@ -58,6 +60,16 @@ public class PlayerController : MonoBehaviour {
 
 	#region Private Methods
 
+	private void OnTriggerEnter(Collider collision)
+	{
+		Debug.Log ("WAT");
+		if (collision.gameObject.tag == globals.tag_KillPlane)
+		{
+			OnKillPlaneCollision();
+		}
+	}
+
+
 	private void InputHandler()
 	{
 		if (Input.GetKey(LeftKey))
@@ -68,9 +80,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			transform.Translate(globals.RightTranslate);
 		}
-		
 
-		
 		if (Input.GetKeyDown(PowerUpKey))
 	    {
 			Debug.Log ("POW");
@@ -79,12 +89,14 @@ public class PlayerController : MonoBehaviour {
 
 	private void Death()
 	{
-		// Deathy things
+		Debug.Log ("THANKS OBAMA");
+		GameObject.Destroy(this.gameObject);
 	}
 
 	private void OnKillPlaneCollision()
 	{
 		// Killy things
+		Death ();
 	}
 
 	#endregion
