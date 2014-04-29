@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log ("HRR");
 		if (collision.gameObject.tag == globals.tag_Ground)
 		{
 			IsJumping = false;

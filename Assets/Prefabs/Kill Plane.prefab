@@ -11,7 +11,7 @@ GameObject:
   - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: Kill Plane
-  m_TagString: Untagged
+  m_TagString: KillPlane
   m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
