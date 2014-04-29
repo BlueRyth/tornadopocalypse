@@ -402,6 +402,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentEnvironment: {fileID: 254870928}
+  NextEnvironment: {fileID: 0}
+  EnvironmentPool:
+  - {fileID: 400014, guid: d85f9d755c9adbe4d9dbbeb10dfd7df4, type: 2}
+  EnvironmentWidth: 30
   globals: {fileID: 993879365}
 --- !u!1001 &800149238
 Prefab:
