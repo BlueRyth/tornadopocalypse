@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour {
 	
 	private void Death()
 	{
+		Debug.Log ("Thanks Obama");
 		GameObject.Destroy(this.gameObject);
 	}
 
