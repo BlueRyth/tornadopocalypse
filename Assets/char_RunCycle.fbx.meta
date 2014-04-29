@@ -1,0 +1,120 @@
+fileFormatVersion: 2
+guid: ab00b0f83a62fbb4eb7ceeb88e47834c
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: C_head
+    100002: C_midback
+    100004: C_neck
+    100006: C_pelvis
+    100008: C_tie1
+    100010: C_tie2
+    100012: C_tie3
+    100014: C_tie4
+    100016: C_upperback
+    100018: //RootNode
+    100020: fatbert
+    100022: god
+    100024: L_ankle
+    100026: L_briefcase
+    100028: L_clavicle
+    100030: L_eblow
+    100032: L_femur
+    100034: L_knee
+    100036: L_shoulder
+    100038: L_toeball
+    100040: L_wrist
+    100042: R_ankle
+    100044: R_clavicle
+    100046: R_eblow
+    100048: R_femur
+    100050: R_knee
+    100052: R_shoulder
+    100054: R_toeball
+    100056: R_wrist
+    400000: C_head
+    400002: C_midback
+    400004: C_neck
+    400006: C_pelvis
+    400008: C_tie1
+    400010: C_tie2
+    400012: C_tie3
+    400014: C_tie4
+    400016: C_upperback
+    400018: //RootNode
+    400020: fatbert
+    400022: god
+    400024: L_ankle
+    400026: L_briefcase
+    400028: L_clavicle
+    400030: L_eblow
+    400032: L_femur
+    400034: L_knee
+    400036: L_shoulder
+    400038: L_toeball
+    400040: L_wrist
+    400042: R_ankle
+    400044: R_clavicle
+    400046: R_eblow
+    400048: R_femur
+    400050: R_knee
+    400052: R_shoulder
+    400054: R_toeball
+    400056: R_wrist
+    4300000: fatbert
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: fatbert
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
