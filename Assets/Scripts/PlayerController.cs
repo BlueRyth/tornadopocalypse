@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 			if (!IsJumping)
 			{
 				rigidbody.AddForce(Vector3.up * 500f);
-				//IsJumping = true;
+				IsJumping = true;
 			}
 		}
 	}
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private void OnCollisionEnter(Collider collision)
+	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == globals.tag_Ground)
 		{
