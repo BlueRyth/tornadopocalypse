@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode PowerUpKey;
 	public Global globals;
 	public CharacterController controller;
+	public float PlayerSpeed = 10f;
 
 	#endregion
 
@@ -72,15 +73,15 @@ public class PlayerController : MonoBehaviour {
 		
 		if (Input.GetKey(LeftKey))
 		{
-			movement += globals.LeftTranslate;
+			movement -= new Vector3(PlayerSpeed * Time.deltaTime, 0f, 0f);
 		}
 		else if (Input.GetKey(RightKey))
 		{
-			movement += globals.RightTranslate;
+			movement += new Vector3(PlayerSpeed * Time.deltaTime, 0f, 0f);
 		}
 
 		movement += JumpHandler();
-		movement += new Vector3(0f, globals.gravity, 0f);
+		movement += new Vector3(0f, globals.gravity * Time.deltaTime, 0f);
 
 		return movement;
 	}
@@ -154,6 +155,7 @@ public class PlayerController : MonoBehaviour {
 		Debug.Log (collision.gameObject.name);
 		if (collision.gameObject.tag == globals.tag_Ground)
 		{
+			Debug.Log ("WAT");
 			JumpState = PlayerJumpState.Grounded;
 		}
 	}
@@ -165,10 +167,10 @@ public class PlayerController : MonoBehaviour {
 	}
 	private void OnObstacleCollision()
 	{
-		// Hit by Obstacle
-		IsStunned = true;
-		JumpState = PlayerJumpState.Falling;
-		stunTimer = globals.stunLength;
+		//// Hit by Obstacle
+		//IsStunned = true;
+		//JumpState = PlayerJumpState.Falling;
+		//stunTimer = globals.stunLength;
 	}
 
 	#endregion
